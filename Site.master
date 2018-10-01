@@ -1,0 +1,118 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> -Fan Club Website</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Fan Club Website</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="liShowFanClubs" runat="server"><a runat="server" href="~/ShowFanClubs.aspx">Fan Clubs</a></li>
+                        <li id="liShowEvents" runat="server"><a runat="server" href="~/ShowEvents.aspx">Events</a></li>
+                        <li id="liFanClubDropDown" class="dropdown" runat="server">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Fan Clubs<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <!-- Registered user menu items -->
+                                <li id="liJoinInitialFanClub" runat="server"><a runat="server" href="~/RegisteredUser/JoinInitialFanClub.aspx">Join Fan Clubs</a></li>
+                                <!-- Registered user/club member menu items -->
+                                <li id="liFanClubsJoined" runat="server"><a runat="server" href="~/ClubMember/FanClubsJoined.aspx">Your Fan Clubs</a></li>
+                                <li id="liJoinFanClubs" runat="server"><a runat="server" href="~/ClubMember/JoinFanClubs.aspx">Join Fan Clubs</a></li>
+                                <li id="liSubmitFanClubRemark" runat="server"><a runat="server" href="~/ClubMember/SubmitFanClubRemark.aspx">Submit Fan Club Remark</a></li>
+                                <li id="liViewFanClubRemarks" runat="server"><a runat="server" href="~/ClubMember/ViewFanClubRemarks.aspx">View Fan Club Remarks</a></li>
+                                <!-- Employee menu items -->
+                                <li id="liCreateFanClub" runat="server"><a runat="server" href="~/Employee/CreateFanClub.aspx">Create Fan Club</a></li>
+                                <li id="liModifyFanClub" runat="server"><a runat="server" href="~/Employee/ModifyFanClub.aspx">Modify Fan Club</a></li>
+                                <li id="liProcessFanClubRemarks" runat="server"><a runat="server" href="~/Employee/ProcessFanClubRemarks.aspx">Process Remarks</a></li>
+                            </ul>
+                        </li>
+                        <li id="liEventDropDown" class="dropdown" runat="server">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <!-- Registered user/club member menu items -->
+                                <li id="liCurrentEventsJoined" runat="server"><a runat="server" href="~/RegisteredUser/CurrentEventsJoined.aspx">Your Current Events</a></li>
+                                <li id="liPastEventsJoined" runat="server"><a runat="server" href="~/RegisteredUser/PastEventsJoined.aspx">Your Past Events</a></li>
+                                <li id="liJoinEvents" runat="server"><a runat="server" href="~/RegisteredUser/JoinEvents.aspx">Join Events</a></li>
+                                <li id="liSubmitEventRemark" runat="server"><a runat="server" href="~/ClubMember/SubmitEventRemark.aspx">Submit Event Remark</a></li>
+                                <li id="liViewEventRemarks" runat="server"><a runat="server" href="~/ClubMember/ViewEventRemarks.aspx">View Event Remarks</a></li>
+                                <!-- Employee menu items -->
+                                <li id="liCreateEvent" runat="server"><a runat="server" href="~/Employee/CreateEvent.aspx">Create Event</a></li>
+                                <li id="liModifyEvent" runat="server"><a runat="server" href="~/Employee/ModifyEvent.aspx">Modify Event</a></li>
+                                <li id="liProcessEventRemarks" runat="server"><a runat="server" href="~/Employee/ProcessEventRemarks.aspx">Process Remarks</a></li>
+                                <li id="liRecordEventAttendance" runat="server"><a runat="server" href="~/Employee/RecordEventInformation.aspx">Record Fee and Attendance</a></li>
+                            </ul>
+                        </li>
+                        <li id="liManageInformation" runat="server"><a runat="server" href="~/RegisteredUser/ManageRegisteredUserInformation.aspx">My Information</a></li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server">Welcome, <%: Context.User.Identity.GetUserName()  %>!</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Fan Club Website</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
